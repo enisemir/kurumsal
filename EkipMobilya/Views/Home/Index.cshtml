@@ -1,0 +1,210 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+{% extends 'home/base.html' %}
+{% block title %}
+Ekip Mobilya
+{% endblock title %}
+{% block content %}
+<div id="example-wrapper">
+    <div class="section">
+        <div class="slide-home slide-home-1">
+            <div data-number="1" data-margin="100" data-loop="yes" data-navcontrol="yes" class="sofani-owl-carousel">
+                {% for i in slider %}
+                <div class="slide2">
+                    <div class="slide2-bg"><img src="/{{ i.slider_image }}" alt="bg" height="400" /></div>
+                    <div class="slde2-content">
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <section>
+        <div class="home-1-highlight yolo-wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="banner-shortcode-wrap style_1">
+                            <div class="banner-content title_top">
+                                <a href="#">
+                                    <h3 class="banner-title">{{ besinci_banner.title }}</h3><span class="overlay-bg bg-84deee"></span><img style="width:277px; height:600px;" src="/{{ besinci_banner.kategori_image }}" alt="demo" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="banner-shortcode-wrap style_1">
+                                    <div class="banner-content title_top">
+                                        <a href="#">
+                                            <h3 class="banner-title">{{ dorduncu_banner.title }}</h3><span class="overlay-bg bg-df8888"></span><img style="width:570px; height:277px;" src="/{{ dorduncu_banner.kategori_image }}" alt="demo" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="banner-shortcode-wrap style_1">
+                                    <div class="banner-content title_top">
+                                        <a href="#">
+                                            <h3 class="banner-title">{{ ucuncu_banner.title }}</h3><span class="overlay-bg bg-84deee"></span><img style="width:277px; height:285px;" src="/{{ ucuncu_banner.kategori_image }}" alt="demo" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="banner-shortcode-wrap style_1">
+                                    <div class="banner-content title_top">
+                                        <a href="#">
+                                            <h3 class="banner-title">{{ ikinci_banner.title }}</h3><span class="overlay-bg bg-e3c56b"></span><img style="width:277px; height:285px;" src="/{{ ikinci_banner.kategori_image }}" alt="demo" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="banner-shortcode-wrap style_1">
+                                    <div class="banner-content title_bottom">
+                                        <a href="#">
+                                            <img style="width:570px; height:277px;" src="/{{ ilk_banner.kategori_image }}" alt="demo" />
+                                            <h3 class="banner-title">{{ ilk_banner.title }}</h3><span class="overlay-bg bg-e3c56b"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- .home-1-highlight-->
+    </section>
+
+    <section>
+        <div class="product">
+            <div class="sperator text-center">
+                <p>KOLEKSİYONLAR</p>
+                <div class="sperator-bottom"><img src="{{STATIC_URL}}home/assets/images/demo/sperator.png" alt="spertor" /></div>
+            </div>
+            <div class="product-tab">
+                <ul class="products-tabs nav nav-pills">
+                    {% for i in koleksiyon_baslik %}
+                    <li><a href="#{{ i.id }}" data-toggle="tab">{{ i.title }}</a></li>
+                    {% endfor %}
+                </ul>
+                <div class="desc-review-content tab-content clearfix">
+                    {% for a in koleksiyon_baslik %}
+                    {% if forloop.counter0 == 0 %}
+                    <div id="{{ a.id }}" class="tab-pane active">
+                        {% else %}
+                        <div id="{{ a.id }}" class="tab-pane">
+                            {% endif %}
+                            <div class="home-1-featured-products">
+                                <div class="products-in-category-tabs-wrapper">
+                                    <div class="products-content">
+                                        <div class="woocommerce product-listing columns-5 clearfix">
+                                            {% for k in koleksiyon %}
+                                            {% if a.id == k.koleksiyonkategori.id %}
+                                            <div class="product-item-wrap has-post-thumbnail">
+                                                <div class="product-item-inner">
+                                                    <div class="product-thumb">
+                                                        <div class="product-flash-wrap"></div>
+                                                        <div class="product-thumb-primary"><img width=300" height=400" src="/{{ k.koleksiyon_image }}" alt="" title="" class="attachment-shop_catalog size-shop_catalog wp-post-image" /></div>
+                                                        <div class="product-thumb-secondary"><img width=300" height=400" src="/{{ k.koleksiyon_image }}" alt="" class="attachment-shop_catalog size-shop_catalog" /></div><a href="#" class="product-link">
+                                                            <div class="product-hover-sign">
+                                                                <hr />
+                                                                <hr />
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-info">
+                                                        <div class="rate"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></div><span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{ k.content }}</span></span><a href="#" target="_blank">
+                                                            <h3>{{ k.title }}</h3>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+    </section>
+    <div class="section" style="padding-top: 30px;">
+        <div class="container">
+            <div class="row">
+                {% for i in kart %}
+                <div class="col-md-6">
+                    <div class="banner-page banner-page-left">
+                        <div class="banner-page-box">
+                            <figure><img style="height:328px;" src="/{{ i.kart_image }}" alt="banner" /></figure>
+                            <div class="content-hover">
+                                <p class="banner-name">{{ i.title }}</p>
+                            </div>
+                            <div class="content-banner">
+                                <span>Ekip Mobilya</span>
+                                <p class="banner-name bg-84deee">{{ i.title }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <section>
+        <div class="dales-this-week">
+            <div class="sperator text-center">
+                <p>BLOG</p>
+                <div class="sperator-bottom"><img src="{{STATIC_URL}}home/assets/images/demo/sperator.png" alt="spertor" /></div>
+            </div>
+            <div class="home-blog-box">
+                <div data-number="3" data-margin="30" data-loop="yes" data-navcontrol="yes" class="sofani-owl-carousel">
+                    {% for i in blog %}
+                    <div class="blog-box">
+                        <div class="blog-img">
+                            <figure><img src="/{{ i.blog_image }}" alt="blog" height="250" /></figure>
+                            <div class="blog-overlay"></div>
+                        </div>
+                        <div class="blog-text">
+                            <div class="post-content">
+                                <div class="post-info"><span class="post-date"><i class="fa fa-calendar"></i>Kasım 15, 2018 </span><span class="post-author"><i class="fa fa-pencil-square-o"></i>YÖNETİM</span></div>
+                            </div>
+                            <h4 class="entry-title"><a href="#">{{ i.title }}</a></h4>
+                            <p class="post-excerpt">{{ i.content }}</p><a href="#" class="btn-readmore">Daha Fazla Oku</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section">
+        <div class="sn-newletter-style1">
+            <div class="container">
+                <div class="sperator text-center">
+                    <p>KAMPANYALARDAN HABERDAR OLUN</p>
+                    <div class="sperator-bottom"><img src="{{STATIC_URL}}home/assets/images/demo/sperator.png" alt="spertor" /></div>
+                </div>
+                <div class="newletter-content">
+                    <p>Kampanyalardan haberdar olmak için emailinizi gönderin.</p>
+                    <form>
+                        <input type="text" placeholder="Emailinizi girin..." /><i class="fa fa-envelope-o"></i>
+                    </form><a href="#" class="btn btn-color-white btn-background-dark">GÖNDER</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+

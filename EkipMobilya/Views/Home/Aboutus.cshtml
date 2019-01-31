@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "Aboutus";
+}
+
+{% extends 'home/base.html' %}
+{% block title %}
+HAKKIMIZDA
+{% endblock title %}
+{% block content %}
+<div id="example-wrapper">
+    <div class="section">
+        <div class="banner-sub-page">
+            <div class="container">
+                <div class="breadcrumbs">
+                    <div class="breadcrumbs-list">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="about-us-content">
+                        <h2>HAKKIMIZDA</h2>
+                        <div class="wpb_text_column wpb_content_element">
+                            <div class="wpb_wrapper">
+                                {% for i in hakkimizda %}
+                                <p>
+                                    {{ i.title }}<br />
+
+                                    Ofis mobilyasi olarak. beklentilerinizi karşilayabilmek adına sizlerin memnuniyetini ve güvenini kazanmak için olağanüstü gayret göstermektedir.<br />
+
+                                    Ekip Mobilya kalite, konfor, ergonomi unsurlarinin hepsini birleştirerek yeni model ve tasarimlari birarada bulunduran ürünleri sizlerin seçimlerine sunmaktadır.
+
+                                    Kalitemiz güleryüzlü satış anlayışımiz ve satış sonrası tüm hizmetlerimiz ile müşteri memnuniyetini en üst limitte tutabilmek en büyük hedefimizdir.
+                                </p>
+
+                            </div>
+                        </div>
+                        <div class="wpb_single_image wpb_content_element vc_align_center">
+                            <figure class="wpb_wrapper vc_figure">
+                                <div class="vc_single_image-wrapper vc_box_border_grey"><img src="/{{ i.hakkimizda_gorsel }}" alt="img 8" width="920" height="350" class="vc_single_image-img attachment-full" /></div>
+                            </figure>
+                        </div>
+                        <div class="wpb_text_column wpb_content_element">
+                            <div class="wpb_wrapper">
+                                <p> {{ i.content }}</p>
+                            </div>
+                        </div>
+                        <div class="about-bottom">
+                            <h2></h2>
+                            <div class="row">
+                                BİZE ULAŞIN
+                                <div class="about-bottom-left col-md-6">
+                                    <div class="wpb_wrapper">
+                                        <p> Ofis makam takimlari, ofis çalışma sistemleri, masa grupları, dolap sistemleri,bankolar, ergonomik çalışma koltukları, makam koltukları, oturma grupları, toplantı masaları, sehpalar, tabure grupları, sinema ve konferans sistemleri, özel tasarim kütüphaneler ve dolaplar, ofis mutfaklarınız kısacası ofisinizde hayal ettiğiniz her türlü tasarımları ve konforlu mobilyaları ile Çağlayan mağazamızda hizmetinizdeyiz.</p>
+                                    </div>
+                                </div>
+                                <div class="about-bottom-right col-md-6">
+                                    <a href="#" title="YOLO"><img src="/{{ i.sayfa_gorseli }}" alt="logo" class="logo-img" /></a>
+                                    <div class="icon-box icon-box-style2">
+                                        <div class="icon-box-left"><i class="fa fa-map-marker"></i></div>
+                                        <div class="icon-box-right"><span>Gürsel Mah. Kağıthane Cad. No:78 Kağıthane / İSTANBUL</span></div>
+                                    </div>
+                                    <div class="icon-box icon-box-style2">
+                                        <div class="icon-box-left"><i class="fa fa-phone"></i></div>
+                                        <div class="icon-box-right"><span>TELEFON : +90 (212) 210 88 10</span></div>
+                                    </div>
+                                    <div class="icon-box icon-box-style2">
+                                        <div class="icon-box-left"><i class="fa fa-envelope-o"></i></div>
+                                        <div class="icon-box-right"><span>ekip@ekipmobilya.com</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endblock %}
+

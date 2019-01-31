@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "Shop";
+}
+
+{% extends 'home/base.html' %}
+{% block title %}
+Shop
+{% endblock title %}
+{% block content %}
+<section>
+    <div class="banner-sub-page">
+        <div class="container">
+
+            <h2 class="sub-page-name">İŞ İSTASYONLARI</h2>
+        </div>
+    </div>
+</section>
+<div class="section">
+    <div class="products-in-category-tabs-wrapper container">
+        <div class="products-content">
+            <div class="woocommerce product-listing columns-4">
+                <div class="ul-list-shop">
+                    <ul class="products-tab-shop nav nav-pills">
+                        <li class="active"><a href="#6a" data-toggle="tab">Kategori</a></li>
+                        <li><a href="#1a" data-toggle="tab">İŞ İSTASYONLARI</a></li>
+                        <li><a href="#3a" data-toggle="tab">SLIDE</a></li>
+
+                    </ul>
+                    <ul class="sidebar-shop"></ul>
+                </div>
+                <div class="sidebar-shop-search toggle-sidebar-shop">
+                    <form>
+                        <input type="text" placeholder="Ürün Arama" /><a href="#"><i class="fa fa-search"></i></a>
+                    </form>
+                </div>
+                <div class="sidebar-shop-col toggle-sidebar-shop">
+
+                </div>
+                <div class="desc-review-content tab-content clearfix">
+                    <div id="1a" class="tab-pane active">
+
+                        {% for i in urun %}
+                        <div class="product-item-wrap has-post-thumbnail">
+                            <div class="product-item-inner">
+                                <div class="product-thumb">
+                                    <div class="product-flash-wrap"></div>
+                                    <img src="/{{ i.urun_image }}" style="height: 270px; width: 270px;" class="attachment-shop_catalog size-shop_catalog wp-post-image" />
+                                </div>
+                                <div class="product-hover-sign">
+                                    <hr />
+                                    <hr />
+                                </div>
+                                </a>
+                                <div class="product-actions">
+                                    <a href="/productdetail/{{ i.id }}" class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>{{ i.content }}</span></span><a href="#" target="_blank">
+                                    <h3>{{ i.title }}</h3>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
