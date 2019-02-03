@@ -13,5 +13,28 @@ namespace EkipMobilya.Areas.Admin.Controllers
         {
             return View();
         }
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(int id)
+        {
+            return View();
+        }
+        public ActionResult Edit()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
+
+        public ActionResult Delete()
+        {
+            return View();
+        }
     }
 }
