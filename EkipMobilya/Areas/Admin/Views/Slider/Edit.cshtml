@@ -1,10 +1,8 @@
-﻿
+﻿@model EkipMobilya.Models.Slaytlar
 @{
     ViewBag.Title = "Edit";
 }
 
-{% extends 'panel/base.html' %}
-{% block content %}
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row bg-title">
@@ -30,18 +28,20 @@
                     <p class="text-muted m-b-30 font-13"> FORM ÖĞELERİ </p>
                     <div class="row">
                         <div class="col-sm-12 col-xs-12">
-                            <form method="POST" action="" class="form-signin" role="form" enctype="multipart/form-data">
+                            @using (Html.BeginForm("Edit", "Slider", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {                            
                                 <div class="control-group">
-                                    <div class="controls">
-                                        <input type="file" name="slider_image">
+                                    <label>Eski Resim</label>
+                                    <div class="controls">                                        
+                                        <img width="150" height="150" src="@Model.Slaytfoto"><br/><br />  <br />
+                                        <label>Yeni Resim Seçin</label>
+                                        <input type="file" name="Imagefile" class="dropify" data-default-file="../plugins/bower_components/dropify/src/images/test-image-1.jpg" required />
+                                        <br />
+                                        <input type="submit" value="Güncelle" class="btn btn-success waves-light m-r-10" />
+                                        @Html.ActionLink("Listeye Dön", "SliderIndex", null, new { @class = "btn btn-primary waves-effect waves-light m-r-10" })
                                     </div>
-                                </div>
-                                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
-                                    DÜZENLE
-                                </button>
-                                {% csrf_token %}
-                                <!--<button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>-->
-                            </form>
+                                </div>                                                   
+                            }
                         </div>
                     </div>
                 </div>
@@ -51,5 +51,5 @@
     <!-- /.container-fluid -->
     <footer class="footer text-center"> 2017 &copy; Ample Admin brought to you by themedesigner.in</footer>
 </div>
-{% endblock %}
+
 
