@@ -60,10 +60,11 @@ namespace EkipMobilya.Areas.Admin.Controllers
                 slayt.Slaytfoto = "/Media/slider/" + filename;
                 filename = Path.Combine(Server.MapPath("/Media/slider/"), filename);
                 slayt.Imagefile.SaveAs(filename);
-                var yeni = db.slaytlar.Find(slayt.SlaytId);
-                yeni.SlaytId = slayt.SlaytId;
-                yeni.Slaytfoto = slayt.Slaytfoto;
+
+                db.Entry(slayt).State = EntityState.Modified;
                 db.SaveChanges();
+
+
                 return RedirectToAction("Index");
             }
             return View(slayt);
