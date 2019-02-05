@@ -43,7 +43,7 @@
                                         <td><img width="150" height="150" src="@item.Slaytfoto"></td>
                                         <td>                                          
                                             @Html.ActionLink("Güncelle", "Edit", new { id = item.SlaytId }, new { @class = "btn btn-primary btn-sm" })
-                                            <a href="/Admin/Slider/Delete/SlaytId" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></a>                                            
+                                            @Html.ActionLink("Sil","Delete",new { id=item.SlaytId}, new { @class="btn btn-danger btn-sm"})
                                         </td>
                                     </tr>
                                 }                            
@@ -56,5 +56,5 @@
         </div>
     </div>
     <!-- /.container-fluid -->
-    <footer class="footer text-center"> 2017 &copy; Ample Admin brought to you by themedesigner.in </footer>
+    <footer class="footer text-center"> 2019 &copy;Powered by Dogruyer Reklam Bilişim Organizasyon A.Ş </footer>
 </div>

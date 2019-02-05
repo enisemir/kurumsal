@@ -8,10 +8,12 @@ namespace EkipMobilya.Areas.Admin.Controllers
 {
     public class BlogController : Controller
     {
+        private Models.ekipContext db = new Models.ekipContext();
         // GET: Admin/Blog
         public ActionResult BlogIndex()
         {
-            return View();
+            var blog = db.blog.ToList();
+            return View(blog);
         }
         public ActionResult Create()
         {

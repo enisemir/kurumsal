@@ -8,10 +8,12 @@ namespace EkipMobilya.Areas.Admin.Controllers
 {
     public class FooterController : Controller
     {
+        private Models.ekipContext db = new Models.ekipContext();
         // GET: Admin/Footer
         public ActionResult FooterIndex()
         {
-            return View();
+            var footer = db.footer.ToList();
+            return View(footer);
         }
         public ActionResult Create()
         {

@@ -8,10 +8,12 @@ namespace EkipMobilya.Areas.Admin.Controllers
 {
     public class RenklerController : Controller
     {
+        private Models.ekipContext db = new Models.ekipContext();
         // GET: Admin/Renkler
         public ActionResult RenklerIndex()
         {
-            return View();
+            var renkler = db.renkler.ToList();
+            return View(renkler);
         }
         public ActionResult Create()
         {

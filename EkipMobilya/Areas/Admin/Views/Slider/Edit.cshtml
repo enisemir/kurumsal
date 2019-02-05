@@ -29,10 +29,11 @@
                     <div class="row">
                         <div class="col-sm-12 col-xs-12">
                             @using (Html.BeginForm("Edit", "Slider", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                            {                            
-                                <div class="control-group">
+                            {                         
+                                @Html.HiddenFor(Model => Model.SlaytId)
+                                <div class="control-group">                                    
                                     <label>Eski Resim</label>
-                                    <div class="controls">                                        
+                                    <div class="controls">                                       
                                         <img width="150" height="150" src="@Model.Slaytfoto"><br/><br />  <br />
                                         <label>Yeni Resim Seçin</label>
                                         <input type="file" name="Imagefile" class="dropify" data-default-file="../plugins/bower_components/dropify/src/images/test-image-1.jpg" required />

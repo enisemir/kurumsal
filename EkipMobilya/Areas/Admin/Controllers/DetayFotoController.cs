@@ -8,10 +8,12 @@ namespace EkipMobilya.Areas.Admin.Controllers
 {
     public class DetayFotoController : Controller
     {
+        private Models.ekipContext db = new Models.ekipContext();
         // GET: Admin/DetayFoto
         public ActionResult DetayFotoIndex()
         {
-            return View();
+            var detayfoto = db.detayfoto.ToList();
+            return View(detayfoto);
         }
         public ActionResult Create()
         {

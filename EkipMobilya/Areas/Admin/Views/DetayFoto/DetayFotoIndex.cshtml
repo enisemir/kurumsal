@@ -1,14 +1,7 @@
-﻿
+﻿@model IEnumerable<EkipMobilya.Models.DetayFoto>
 @{
     ViewBag.Title = "DetayFotoIndex";
 }
-
-{% extends 'panel/base.html' %}
-
-{% load staticfiles %}
-
-{% block content %}
-
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row bg-title">
@@ -42,17 +35,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for i in tumu %}
+                                @foreach (var item in Model)
+                                {                                
                                 <tr>
-                                    <td class="text-center">1</td>
-                                    <td><img width="150px;" height="150px;" src="/media/{{ i.detail_image }}"></td>
+                                    <td class="text-center">@item.DetayFotoId</td>
+                                    <td><img width="150" height="150" src="@item.DetayResim"></td>
                                     <td>{{ i.urun_key.title }}</td>
                                     <td>
-                                        <a href="/Admin/DetayFoto/Delete/{{ i.id }}" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></a>
-                                        <a href="/Admin/DetayFoto/Edit/{{ i.id }}" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></a>
+                                        @Html.ActionLink("Güncelle", "Edit", new { id = item.DetayFotoId }, new { @class = "btn btn-primary btn-sm" })
+                                        @Html.ActionLink("Sil", "Delete", new { id = item.DetayFotoId }, new { @class = "btn btn-danger btn-sm" })
                                     </td>
                                 </tr>
-                                {% endfor %}
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -61,7 +55,6 @@
         </div>
     </div>
     <!-- /.container-fluid -->
-    <footer class="footer text-center"> 2017 &copy; Ample Admin brought to you by themedesigner.in </footer>
+    <footer class="footer text-center"> 2019 &copy;Powered by Dogruyer Reklam Bilişim Organizasyon A.Ş </footer>
 </div>
-{% endblock %}
 

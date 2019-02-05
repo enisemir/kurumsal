@@ -8,10 +8,12 @@ namespace EkipMobilya.Areas.Admin.Controllers
 {
     public class BannerController : Controller
     {
+        private Models.ekipContext db = new Models.ekipContext();
         // GET: Admin/Banner
         public ActionResult BannerIndex()
         {
-            return View();
+            var banner = db.banner.ToList();
+            return View(banner);
         }
         public ActionResult Create()
         {

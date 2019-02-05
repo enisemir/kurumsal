@@ -8,10 +8,12 @@ namespace EkipMobilya.Areas.Admin.Controllers
 {
     public class KoleksiyonController : Controller
     {
+        private Models.ekipContext db = new Models.ekipContext();
         // GET: Admin/Koleksiyon
         public ActionResult KoleksiyonIndex()
         {
-            return View();
+            var koleksiyon = db.koleksiyon.ToList();
+            return View(koleksiyon);
         }
         public ActionResult Create()
         {

@@ -8,10 +8,12 @@ namespace EkipMobilya.Areas.Admin.Controllers
 {
     public class HakkimizdaController : Controller
     {
+        private Models.ekipContext db = new Models.ekipContext();
         // GET: Admin/Hakkimizda
         public ActionResult HakkimizdaIndex()
         {
-            return View();
+            var hakkimizda = db.hakkimizda.ToList();
+            return View(hakkimizda);
         }
         public ActionResult Create()
         {

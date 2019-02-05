@@ -1,10 +1,8 @@
-﻿
+﻿@model IEnumerable<EkipMobilya.Models.KoleksiyonBaslik>
 @{
     ViewBag.Title = "KoleksiyonBaslikIndex";
 }
 
-{% extends 'panel/base.html' %}
-{% block content %}
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row bg-title">
@@ -38,18 +36,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for i in tumu %}
+                                @foreach (var item in Model)
+                                {                                
                                 <tr>
-                                    <td class="text-center">1</td>
+                                    <td class="text-center">@item.KoleksiyonBaslikId</td>
                                     <td>
-                                        {{ i.title }}
+                                        @item.KoleksiyonBaslikIsim
                                     </td>
                                     <td>
-                                        <a href="/Admin/KoleksiyonBaslik/Delete/{{ i.id }}" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></a>
-                                        <a href="/Admin/KoleksiyonBaslik/Edit/{{ i.id }}" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></a>
+                                        @Html.ActionLink("Güncelle", "Edit", new { id = item.KoleksiyonBaslikId }, new { @class = "btn btn-primary btn-sm" })
+                                        @Html.ActionLink("Sil", "Delete", new { id = item.KoleksiyonBaslikId }, new { @class = "btn btn-danger btn-sm" })
                                     </td>
                                 </tr>
-                                {% endfor %}
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -59,7 +58,7 @@
 
     </div>
     <!-- /.container-fluid -->
-    <footer class="footer text-center"> 2017 &copy; Ample Admin brought to you by themedesigner.in </footer>
+    <footer class="footer text-center"> 2019 &copy;Powered by Dogruyer Reklam Bilişim Organizasyon A.Ş </footer>
 </div>
-{% endblock %}
+
 

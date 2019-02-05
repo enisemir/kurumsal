@@ -8,10 +8,12 @@ namespace EkipMobilya.Areas.Admin.Controllers
 {
     public class AnaKategorilerController : Controller
     {
+        private Models.ekipContext db = new Models.ekipContext();
         // GET: Admin/AnaKategoriler
         public ActionResult AnaKategorilerIndex()
         {
-            return View();
+            var anakategoriler = db.anakategoriler.ToList();
+            return View(anakategoriler);
         }
         public ActionResult Create()
         {

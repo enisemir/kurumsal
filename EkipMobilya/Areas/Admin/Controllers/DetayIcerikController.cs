@@ -8,10 +8,12 @@ namespace EkipMobilya.Areas.Admin.Controllers
 {
     public class DetayIcerikController : Controller
     {
+        private Models.ekipContext db = new Models.ekipContext();
         // GET: Admin/DetayIcerik
         public ActionResult DetayIcerikIndex()
         {
-            return View();
+            var detayicerik = db.detayicerik.ToList();
+            return View(detayicerik);
         }
         public ActionResult Create()
         {

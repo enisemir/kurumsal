@@ -51,7 +51,7 @@ namespace EkipMobilya.Areas.Admin.Controllers
             return View(slayt);
         }
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "SlaytId,Slaytfoto,Imagefile")] Slaytlar slayt)
+        public ActionResult Edit(Slaytlar slayt)
         {
             if (ModelState.IsValid) { 
                 string filename = Path.GetFileNameWithoutExtension(slayt.Imagefile.FileName);
@@ -60,19 +60,22 @@ namespace EkipMobilya.Areas.Admin.Controllers
                 slayt.Slaytfoto = "/Media/slider/" + filename;
                 filename = Path.Combine(Server.MapPath("/Media/slider/"), filename);
                 slayt.Imagefile.SaveAs(filename);
-
+                
                 db.Entry(slayt).State = EntityState.Modified;
                 db.SaveChanges();
 
 
-                return RedirectToAction("Index");
+                return RedirectToAction("SliderIndex");
             }
             return View(slayt);
         }
 
-        public ActionResult Delete()
+        public ActionResult Delete(int? id)
         {
-            return View();
+            Slaytlar slayt = db.slaytlar.Find(id);
+            db.slaytlar.Remove(slayt);
+            db.SaveChanges();
+            return RedirectToAction("SliderIndex");
         }
     }
 }

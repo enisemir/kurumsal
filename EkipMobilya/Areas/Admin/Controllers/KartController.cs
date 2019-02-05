@@ -8,10 +8,12 @@ namespace EkipMobilya.Areas.Admin.Controllers
 {
     public class KartController : Controller
     {
+        private Models.ekipContext db = new Models.ekipContext();
         // GET: Admin/Kart
         public ActionResult KartIndex()
         {
-            return View();
+            var kart = db.kart.ToList();
+            return View(kart);
         }
         public ActionResult Create()
         {
