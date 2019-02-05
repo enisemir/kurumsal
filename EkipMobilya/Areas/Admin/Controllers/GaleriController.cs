@@ -9,7 +9,7 @@ namespace EkipMobilya.Areas.Admin.Controllers
 {
     public class GaleriController : Controller
     {
-        private Models.ekipContext db = new ekipContext();
+        private ekipContext db = new ekipContext();
         // GET: Admin/Galeri
         public ActionResult GaleriIndex()
         {

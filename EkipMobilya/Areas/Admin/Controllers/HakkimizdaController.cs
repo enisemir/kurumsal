@@ -9,7 +9,7 @@ namespace EkipMobilya.Areas.Admin.Controllers
 {
     public class HakkimizdaController : Controller
     {
-        private Models.ekipContext db = new ekipContext();
+        private ekipContext db = new ekipContext();
         // GET: Admin/Hakkimizda
         public ActionResult HakkimizdaIndex()
         {

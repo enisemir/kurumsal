@@ -1,10 +1,8 @@
-﻿
+﻿@model EkipMobilya.Models.Renkler
 @{
     ViewBag.Title = "Create";
 }
 
-{% extends 'panel/base.html' %}
-{% block content %}
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row bg-title">
@@ -30,14 +28,21 @@
                     <p class="text-muted m-b-30 font-13"> Bootstrap Elements </p>
                     <div class="row">
                         <div class="col-sm-12 col-xs-12">
-                            <form method="POST" action="" class="form-signin" role="form" enctype="multipart/form-data">
-                                {% for field in form %}
-                                <input type="{{field.field.widget.input_type}}" name="{{field.html_name}}" placeholder="{{field.label}}" class="form-control" />
+                            @using (Html.BeginForm("Create", "Renkler", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <h3 class="box-title">@Html.DisplayNameFor(model => model.RenkResim)</h3>
+                                <label for="input-file-now-custom-1">@DateTime.Now</label>
+                                <input type="file" name="Imagefile" class="form-control" required/>
                                 <br><br>
-                                {% endfor %}
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
-                            </form>
+                                <h3 class="box-title">@Html.DisplayNameFor(model => model.RenkAdi)</h3>
+                                <label for="input-file-now-custom-1">@DateTime.Now</label>
+                                <br>
+                                @Html.EditorFor(model=>model.RenkAdi, new { @class="form-control"})
+                                <br><br>
+                                <input type="submit" value="Kaydet" class="btn btn-success waves-light m-r-10" />
+                                @Html.ActionLink("Listeye Dön", "RenklerIndex", null, new { @class = "btn btn-primary waves-effect waves-light m-r-10" })
+                            }
                         </div>
                     </div>
                 </div>
@@ -47,4 +52,3 @@
     <!-- /.container-fluid -->
     <footer class="footer text-center"> 2017 &copy; Ample Admin brought to you by themedesigner.in </footer>
 </div>
-{% endblock %}

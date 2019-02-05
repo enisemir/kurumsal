@@ -12,7 +12,7 @@ namespace EkipMobilya.Areas.Admin.Controllers
 {
     public class SliderController : Controller
     {
-        private Models.ekipContext db = new Models.ekipContext();
+        private ekipContext db = new ekipContext();
         // GET: Admin/Slider
         public ActionResult SliderIndex()
         {

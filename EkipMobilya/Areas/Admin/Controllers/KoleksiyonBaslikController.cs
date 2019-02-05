@@ -9,7 +9,7 @@ namespace EkipMobilya.Areas.Admin.Controllers
 {
     public class KoleksiyonBaslikController : Controller
     {
-        private Models.ekipContext db = new ekipContext();
+        private ekipContext db = new ekipContext();
         // GET: Admin/KoleksiyonBaslik
         public ActionResult KoleksiyonBaslikIndex()
         {
@@ -21,8 +21,14 @@ namespace EkipMobilya.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(int id)
+        public ActionResult Create(KoleksiyonBaslik koleksiyonBaslik)
         {
+            if (ModelState.IsValid)
+            {
+                db.koleksiyonbaslik.Add(koleksiyonBaslik);
+                db.SaveChanges();
+                return RedirectToAction("KoleksiyonBaslikIndex");
+            }         
             return View();
         }
         public ActionResult Edit()

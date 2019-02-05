@@ -5130,6 +5130,7 @@
     <Compile Include="Areas\Admin\Controllers\KoleksiyonController.cs" />
     <Compile Include="Areas\Admin\Controllers\RenklerController.cs" />
     <Compile Include="Areas\Admin\Controllers\SliderController.cs" />
+    <Compile Include="Areas\Admin\Models\KoleksiyonView.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -6648,9 +6649,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Content\panel\plugins\bower_components\etc\" />
     <Folder Include="Content\plugins\bower_components\etc\" />
+    <Folder Include="Media\renk\" />
     <Folder Include="Views\Panel\" />
   </ItemGroup>
   <ItemGroup>

@@ -35,7 +35,7 @@ namespace EkipMobilya.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult Delete()
+        public ActionResult Delete(int? id)
         {
             AnaKategoriler anaKategoriler = db.anakategoriler.Find(id);
             db.anakategoriler.Remove(anaKategoriler);

@@ -31,7 +31,7 @@
                            {
                             @Html.AntiForgeryToken()
                             <h3 class="box-title">@Html.DisplayNameFor(model=>model.Slaytfoto)</h3>
-                            <label for="input-file-now-custom-1">Tarih</label>
+                            <label for="input-file-now-custom-1">@DateTime.Now</label>
                             <input type="file" name="Imagefile" class="dropify" data-default-file="../plugins/bower_components/dropify/src/images/test-image-1.jpg" required />                        
                                 <br><br>
                             <input type="submit" value="Kaydet" class="btn btn-success waves-light m-r-10" />

@@ -4,12 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using EkipMobilya.Models;
+using EkipMobilya.Areas.Admin.Models;
 
 namespace EkipMobilya.Areas.Admin.Controllers
 {
     public class KoleksiyonController : Controller
     {
-        private Models.ekipContext db = new ekipContext();
+        private ekipContext db = new ekipContext();
         // GET: Admin/Koleksiyon
         public ActionResult KoleksiyonIndex()
         {
@@ -18,11 +19,15 @@ namespace EkipMobilya.Areas.Admin.Controllers
         }
         public ActionResult Create()
         {
-            return View();
+            var koleksiyonView = new KoleksiyonView();
+            koleksiyonView.koleksiyonModel = db.koleksiyon.ToList();
+            koleksiyonView.koleksiyonBaslikModel = db.koleksiyonbaslik.ToList();
+            return View(koleksiyonView);
         }
         [HttpPost]
         public ActionResult Create(int id)
         {
+
             return View();
         }
         public ActionResult Edit()
