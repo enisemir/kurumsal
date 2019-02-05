@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EkipMobilya.Models;
 
 namespace EkipMobilya.Areas.Admin.Controllers
 {
     public class BannerController : Controller
     {
-        private Models.ekipContext db = new Models.ekipContext();
+        private ekipContext db = new ekipContext();
         // GET: Admin/Banner
         public ActionResult BannerIndex()
         {
@@ -34,9 +35,12 @@ namespace EkipMobilya.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult Delete()
+        public ActionResult Delete(int? id)
         {
-            return View();
+            Banner bannner = db.banner.Find(id);
+            db.banner.Remove(bannner);
+            db.SaveChanges();
+            return RedirectToAction("BannerIndex");
         }
     }
 }

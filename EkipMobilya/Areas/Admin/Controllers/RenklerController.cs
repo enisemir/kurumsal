@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EkipMobilya.Models;
 
 namespace EkipMobilya.Areas.Admin.Controllers
 {
@@ -34,9 +35,12 @@ namespace EkipMobilya.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult Delete()
+        public ActionResult Delete(int? id)
         {
-            return View();
+            Renkler renk = db.renkler.Find(id);
+            db.renkler.Remove(renk);
+            db.SaveChanges();
+            return RedirectToAction("RenklerIndex");
         }
     }
 }

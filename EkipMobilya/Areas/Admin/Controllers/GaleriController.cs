@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EkipMobilya.Models;
 
 namespace EkipMobilya.Areas.Admin.Controllers
 {
     public class GaleriController : Controller
     {
-        private Models.ekipContext db = new Models.ekipContext();
+        private Models.ekipContext db = new ekipContext();
         // GET: Admin/Galeri
         public ActionResult GaleriIndex()
         {
@@ -34,9 +35,12 @@ namespace EkipMobilya.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult Delete()
+        public ActionResult Delete(int? id)
         {
-            return View();
+            Galeri gaLeri = db.galeri.Find(id);
+            db.galeri.Remove(gaLeri);
+            db.SaveChanges();
+            return RedirectToAction("GaleriIndex");
         }
     }
 }

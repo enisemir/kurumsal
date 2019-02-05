@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EkipMobilya.Models;
 
 namespace EkipMobilya.Areas.Admin.Controllers
 {
     public class AnaKategorilerController : Controller
     {
-        private Models.ekipContext db = new Models.ekipContext();
+        private ekipContext db = new ekipContext();
         // GET: Admin/AnaKategoriler
         public ActionResult AnaKategorilerIndex()
         {
@@ -36,7 +37,10 @@ namespace EkipMobilya.Areas.Admin.Controllers
 
         public ActionResult Delete()
         {
-            return View();
+            AnaKategoriler anaKategoriler = db.anakategoriler.Find(id);
+            db.anakategoriler.Remove(anaKategoriler);
+            db.SaveChanges();
+            return RedirectToAction("AnaKategorilerIndex");
         }
     }
 }

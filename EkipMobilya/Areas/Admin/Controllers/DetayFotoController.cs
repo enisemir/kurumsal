@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EkipMobilya.Models;
 
 namespace EkipMobilya.Areas.Admin.Controllers
 {
     public class DetayFotoController : Controller
     {
-        private Models.ekipContext db = new Models.ekipContext();
+        private Models.ekipContext db = new ekipContext();
         // GET: Admin/DetayFoto
         public ActionResult DetayFotoIndex()
         {
@@ -34,9 +35,12 @@ namespace EkipMobilya.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult Delete()
+        public ActionResult Delete(int? id)
         {
-            return View();
+            DetayFoto detayFoto = db.detayfoto.Find(id);
+            db.detayfoto.Remove(detayFoto);
+            db.SaveChanges();
+            return RedirectToAction("DetayFotoIndex");
         }
     }
 }

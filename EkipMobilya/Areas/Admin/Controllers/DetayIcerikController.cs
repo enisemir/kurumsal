@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EkipMobilya.Models;
 
 namespace EkipMobilya.Areas.Admin.Controllers
 {
     public class DetayIcerikController : Controller
     {
-        private Models.ekipContext db = new Models.ekipContext();
+        private ekipContext db = new ekipContext();
         // GET: Admin/DetayIcerik
         public ActionResult DetayIcerikIndex()
         {
@@ -34,9 +35,12 @@ namespace EkipMobilya.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult Delete()
+        public ActionResult Delete(int? id)
         {
-            return View();
+            DetayIcerik detayIcerik = db.detayicerik.Find(id);
+            db.detayicerik.Remove(detayIcerik);
+            db.SaveChanges();
+            return RedirectToAction("DetayIcerikIndex");
         }
     }
 }
