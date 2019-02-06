@@ -32,9 +32,12 @@ namespace EkipMobilya.Areas.Admin.Controllers
             image.Slaytfoto = "/Media/slider/" + filename;
             filename = Path.Combine(Server.MapPath("/Media/slider/"), filename);
             image.Imagefile.SaveAs(filename);
+
+
             db.slaytlar.Add(image);
             db.SaveChanges();
             ModelState.Clear();
+
             return View();
         }
         public ActionResult Edit(int? id)

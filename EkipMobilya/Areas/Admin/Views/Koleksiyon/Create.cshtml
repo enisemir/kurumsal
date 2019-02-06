@@ -1,10 +1,8 @@
-﻿@model EkipMobilya.Areas.Admin.Models.KoleksiyonView
+﻿@model Tuple<EkipMobilya.Models.Koleksiyon, EkipMobilya.Areas.Admin.Models.KoleksiyonView>
 @{
     ViewBag.Title = "Create";
 }
 
-{% extends 'panel/base.html' %}
-{% block content %}
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row bg-title">
@@ -31,17 +29,25 @@
                     <div class="row">
                         <div class="col-sm-12 col-xs-12">
                             @using (Html.BeginForm("Create", "Koleksiyon", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                                {
-                                <input type="{{field.field.widget.input_type}}" name="{{field.html_name}}" placeholder="{{field.label}}" class="form-control" />
+                            {                                  
+                                <h3 class="box-title">@Html.DisplayNameFor(i=>i.Item1.KoleksiyonResim)</h3>
+                                <label for="input-file-now-custom-1">@DateTime.Now</label>
+                                <input type="file" name="Imagefile" class="form-control" required />
+                                <br><br>
+                                <h3 class="box-title"></h3>
+                                <label for="input-file-now-custom-1">@DateTime.Now</label>
+                                @Html.EditorFor(i =>i.Item1.KoleksiyonAdi, new { @class = "form-control" })
                                 <br><br>                               
                                 <select class="form-control" id="koleksiyonkategori" name="koleksiyonkategori">
-                                    {% for k in tumkategoriler %}
-                                    <option id="{{k.id}}" name="{{k.id}}" value="{{k.id}}"> {{ k.title }} </option>
-                                    {% endfor %}
+                                    @foreach (var item2 in Model.Item2.koleksiyonBaslikModel)
+                                    {                                    
+                                    <option name="@item2.KoleksiyonBaslikId" value="@item2.KoleksiyonBaslikId"> @item2.KoleksiyonBaslikIsim </option>
+                                    }
                                 </select>
                                 <br />
                                
                                 <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">EKLE</button>
+                                
                             }
                         </div>
                     </div>

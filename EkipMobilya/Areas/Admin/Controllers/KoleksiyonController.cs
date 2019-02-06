@@ -19,15 +19,15 @@ namespace EkipMobilya.Areas.Admin.Controllers
         }
         public ActionResult Create()
         {
-            var koleksiyonView = new KoleksiyonView();
-            koleksiyonView.koleksiyonModel = db.koleksiyon.ToList();
-            koleksiyonView.koleksiyonBaslikModel = db.koleksiyonbaslik.ToList();
-            return View(koleksiyonView);
+            var koleksiyonbaslik = new KoleksiyonView();
+            var koleksiyon = new Koleksiyon();          
+            koleksiyonbaslik.koleksiyonBaslikModel = db.koleksiyonbaslik.ToList();
+            
+            return View(Tuple.Create(koleksiyon, koleksiyonbaslik));
         }
         [HttpPost]
-        public ActionResult Create(int id)
+        public ActionResult Create(Koleksiyon koleksiyon)
         {
-
             return View();
         }
         public ActionResult Edit()

@@ -14,8 +14,10 @@ namespace EkipMobilya.Models
         public string KoleksiyonResim { get; set; }
         public string KoleksiyonIcerik { get; set; }
         public string KoleksiyonAdi { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase Imagefile { get; set; }
 
-        
+
         public int KoleksiyonBaslikId { get; set; }
         [ForeignKey("KoleksiyonBaslikId")]
         public KoleksiyonBaslik koleksiyonBaslik { get; set; }
